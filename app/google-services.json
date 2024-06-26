@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "808706020690",
+    "project_id": "storiesteller-fa477",
+    "storage_bucket": "storiesteller-fa477.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808706020690:android:bd877dcf0df7def129968b",
+        "android_client_info": {
+          "package_name": "com.example.storiesdata"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0CMH3GqfbsbYohBqG5Zj6NnqwdEq2CWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
