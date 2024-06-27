@@ -52,7 +52,10 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.squareup.picasso:picasso:2.8")
     implementation ("com.airbnb.android:lottie:6.4.1")
+<<<<<<< HEAD
     implementation ("com.google.android.gms:play-services-ads:23.1.0")
 
+=======
+>>>>>>> app/ads
 
 }

@@ -36,7 +36,7 @@ class StoriesAdapter(val context:Context,val collectionList:ArrayList<StoriesDat
         holder.title.text=obj.title
         holder.storyNumber.text=(position+1).toString()
         holder.storyRow.setOnClickListener {
-            context.startActivity(Intent(context,StoryReadScreen::class.java).putExtra("myObject", obj))
+            context.startActivity(Intent(context, StoryReadScreen::class.java).putExtra("myObject", obj))
 
         }
 
