@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.storiesdata.Models.MainCollectionModel
 import com.example.storiesdata.R
 import com.example.storiesdata.StoriesScreen
+import com.google.android.material.imageview.ShapeableImageView
 import com.squareup.picasso.Picasso
 
 class CollectionAdapter(val context:Context,val collectionList:ArrayList<MainCollectionModel>):RecyclerView.Adapter<CollectionAdapter.MyViewHolder>() {
@@ -36,10 +37,22 @@ class CollectionAdapter(val context:Context,val collectionList:ArrayList<MainCol
             .load(obj.imageUrl)
             .into(holder.collectionImage)
        holder.row.setOnClickListener {
-           Toast.makeText(context,obj.storyType.toString(),Toast.LENGTH_LONG).show()
            context.startActivity(Intent(context,StoriesScreen::class.java).putExtra("storyCollection",obj.storyType))
-
        }
+
+        var  pos=position+1
+//           Toast.makeText(context,collectionList.size,Toast.LENGTH_LONG).show()
+//
+           if (pos==collectionList.size){
+               Toast.makeText(context,pos.toString(),Toast.LENGTH_LONG).show()
+               // Alternatively, if you want to set padding in dp, convert dp to pixels first
+               val paddingInDp = 30
+               val scale = context.resources.displayMetrics.density
+               val paddingInPx = (paddingInDp * scale + 0.5f).toInt()
+               holder.row.setPadding(0,0,0, paddingInPx)
+
+           }
+
 
 
 
@@ -49,7 +62,7 @@ class CollectionAdapter(val context:Context,val collectionList:ArrayList<MainCol
 
 
     inner  class MyViewHolder(val view:View):RecyclerView.ViewHolder(view){
-        val collectionImage=view.findViewById<ImageView>(R.id.collectionImage)
+        val collectionImage=view.findViewById<ShapeableImageView>(R.id.shimmerCollectionIamge)
         val collectionName=view.findViewById<TextView>(R.id.collectionName)
         val row=view.findViewById<ConstraintLayout>(R.id.mainRecyerRow)
 

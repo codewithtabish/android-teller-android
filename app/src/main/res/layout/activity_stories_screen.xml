@@ -8,6 +8,52 @@
     android:background="@color/white"
     tools:context=".StoriesScreen">
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/stoies_shimmer_second"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shimmer_auto_start="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            android:orientation="vertical">
+
+   <include
+       layout="@layout/stories_shimmer"
+       />   <include
+       layout="@layout/stories_shimmer"
+       />   <include
+       layout="@layout/stories_shimmer"
+       />   <include
+       layout="@layout/stories_shimmer"
+       />   <include
+       layout="@layout/stories_shimmer"
+       />   <include
+       layout="@layout/stories_shimmer"
+       />   <include
+       layout="@layout/stories_shimmer"
+       />   <include
+       layout="@layout/stories_shimmer"
+       />   <include
+       layout="@layout/stories_shimmer"
+       />
+
+
+
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/storiesRecyler"
         android:layout_width="match_parent"

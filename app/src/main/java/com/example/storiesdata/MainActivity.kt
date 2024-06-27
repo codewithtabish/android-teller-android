@@ -1,21 +1,31 @@
 package com.example.storiesdata
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.storiesdata.Adapters.CollectionAdapter
 import com.example.storiesdata.Models.MainCollectionModel
 import com.example.storiesdata.databinding.ActivityMainBinding
+import com.facebook.shimmer.Shimmer
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding:ActivityMainBinding
     lateinit var collectionList:ArrayList<MainCollectionModel>
     lateinit var collectionAdapter:CollectionAdapter
+    private lateinit var shimmerFrameLayout: Any
+    private val handler = Handler()
+    private var isShown=false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,15 +38,39 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         loadVaraibles()
         getAllCollectionData()
+        binding.adsCrossIcon.setOnClickListener {
+            operateAds()
+            isShown=false
+        }
+        showAdsWithDelay(4000)
+
+
+
 
 
 
     }
 
+    private fun showAds() {
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (binding.adsContainer.visibility==View.GONE){
+                binding.adsContainer.visibility=View.VISIBLE
+
+            }
+        }, 500)
+    }
+
+    private fun operateAds() {
+        binding.adsContainer.visibility=View.GONE
+    }
+
     private fun loadVaraibles(){
         collectionList=ArrayList()
+
 
     }
 
@@ -67,6 +101,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     getAllCollections()
 
+
                     // Process retrieved data (e.g., update UI, perform calculations)
 //                    processData(dataList)
                 } else {
@@ -78,16 +113,16 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun processData(data: List<HashMap<String, Any?>>) {
-        // Implement your logic to handle the retrieved data
-        // (e.g., update UI elements, perform calculations)
-
-        // Example: Loop through data and print titles
-        for (item in data) {
-            val title = item["title"] as? String ?: "No title"
-            Log.d("Data", "Title: $title")
-        }
+    override fun onPause() {
+        super.onPause()
+        showAdsWithDelay(100)
     }
+
+    override fun onResume() {
+        super.onResume()
+        showAdsWithDelay(4000)
+    }
+
 
 
 
@@ -95,6 +130,22 @@ class MainActivity : AppCompatActivity() {
         collectionAdapter=CollectionAdapter(this,collectionList)
         binding.mainRecyclerView.adapter=collectionAdapter
         binding.mainRecyclerView.layoutManager=LinearLayoutManager(this)
+        binding.shimmerView.visibility=View.GONE
 
     }
+
+
+    private fun showAdsWithDelay(delay: Long) {
+
+        val showButtonRunnable = Runnable {
+            if (!isShown) { // Check if not shown yet
+                binding.adsContainer.visibility = View.VISIBLE
+                isShown = true // Set flag to prevent repeated showing
+            }
+        }
+
+        handler.postDelayed(showButtonRunnable, delay)
+    }
+
+
 }

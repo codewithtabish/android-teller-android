@@ -7,15 +7,132 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <androidx.recyclerview.widget.RecyclerView
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view"
         android:layout_width="match_parent"
+
         android:layout_height="match_parent"
-        android:id="@+id/mainRecyclerView"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/main_recycler"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shimmer_auto_start="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            android:orientation="vertical">
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+            <include layout="@layout/story_row_shimmer" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mainRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/adsContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/main_recycler" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/adsContainer"
+        android:layout_width="match_parent"
+
+        android:layout_height="70dp"
+        android:background="@drawable/background"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/adsImage"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/youtube_style_playback_svgrepo_com"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/adsContent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/adsContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dp"
+            android:text="youtube content"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/adsImage"
+            app:layout_constraintEnd_toStartOf="@+id/adsCrossIcon"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/adsImage"
+            app:layout_constraintTop_toTopOf="@+id/adsImage" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/adsCrossIcon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/cross_svgrepo_com"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/adsContent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
