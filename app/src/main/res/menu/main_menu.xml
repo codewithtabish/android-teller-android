@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="home"
+        android:id="@+id/homeItem"
+        android:icon="@drawable/cross_svgrepo_com"/>
+    <item android:title="Item"
+        android:id="@+id/faviourites"
+        android:icon="@drawable/youtube_style_playback_svgrepo_com"/>
+    <item android:title="settings"
+        android:id="@+id/settins"
+        android:icon="@drawable/curved_arrow_right_icon"/>
+</menu>

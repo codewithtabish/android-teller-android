@@ -17,7 +17,14 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.storiesdata.Models.StoriesDataModel
 import com.example.storiesdata.databinding.ActivityStoryReadScreenBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 class StoryReadScreen : AppCompatActivity() {
@@ -37,6 +44,7 @@ class StoryReadScreen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        checkAds()
         loadData()
 
         binding.speakIcon.setOnClickListener {
@@ -166,4 +174,35 @@ class StoryReadScreen : AppCompatActivity() {
         textToSpeech?.stop()
         textToSpeech?.shutdown()
     }
+
+    private fun checkAds(){
+        val backgroundScope = CoroutineScope(Dispatchers.IO)
+        backgroundScope.launch {
+            // Initialize the Google Mobile Ads SDK on a background thread.
+            MobileAds.initialize(this@StoryReadScreen) {}
+
+        }
+        adsShoen()
+
+    }
+
+    private fun  adsShoen(){
+        // Create a new ad view.
+        val adView = AdView(this)
+        adView.setAdSize(AdSize.BANNER)
+        adView.adUnitId ="ca-app-pub-2101779718159669/7036158272"
+//            "ca-app-pub-3940256099942544/9214589741"
+//            "ca-app-pub-2101779718159669/7036158272"
+
+        // Create an ad request.
+        val adRequest = AdRequest.Builder().build()
+        binding.readScreenAdsContainer.addView(adView)
+
+        // Start loading the ad in the background.
+        adView.loadAd(adRequest)
+
+
+    }
+
+
 }

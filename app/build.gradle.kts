@@ -53,5 +53,8 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.8")
     implementation ("com.airbnb.android:lottie:6.4.1")
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
+    implementation ("com.google.android.gms:play-services-ads:23.1.0")
+
+
 
 }

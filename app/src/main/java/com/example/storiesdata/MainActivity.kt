@@ -17,15 +17,23 @@ import com.example.storiesdata.Models.MainCollectionModel
 import com.example.storiesdata.databinding.ActivityMainBinding
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding:ActivityMainBinding
     lateinit var collectionList:ArrayList<MainCollectionModel>
     lateinit var collectionAdapter:CollectionAdapter
     private lateinit var shimmerFrameLayout: Any
-    private val handler = Handler()
-    private var isShown=false
+    private lateinit var query:Query
+    private val LIMIT = 10
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,11 +49,8 @@ class MainActivity : AppCompatActivity() {
 
         loadVaraibles()
         getAllCollectionData()
-        binding.adsCrossIcon.setOnClickListener {
-            operateAds()
-            isShown=false
-        }
-        showAdsWithDelay(4000)
+        checkAds()
+
 
 
 
@@ -54,19 +59,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun showAds() {
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            if (binding.adsContainer.visibility==View.GONE){
-                binding.adsContainer.visibility=View.VISIBLE
-
-            }
-        }, 500)
-    }
-
-    private fun operateAds() {
-        binding.adsContainer.visibility=View.GONE
-    }
 
     private fun loadVaraibles(){
         collectionList=ArrayList()
@@ -113,15 +106,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    override fun onPause() {
-        super.onPause()
-        showAdsWithDelay(100)
-    }
 
-    override fun onResume() {
-        super.onResume()
-        showAdsWithDelay(4000)
-    }
 
 
 
@@ -135,17 +120,36 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun showAdsWithDelay(delay: Long) {
+    private fun checkAds(){
+        val backgroundScope = CoroutineScope(Dispatchers.IO)
+        backgroundScope.launch {
+            // Initialize the Google Mobile Ads SDK on a background thread.
+            MobileAds.initialize(this@MainActivity) {}
 
-        val showButtonRunnable = Runnable {
-            if (!isShown) { // Check if not shown yet
-                binding.adsContainer.visibility = View.VISIBLE
-                isShown = true // Set flag to prevent repeated showing
-            }
         }
+        adsShoen()
 
-        handler.postDelayed(showButtonRunnable, delay)
     }
+
+    private fun  adsShoen(){
+        // Create a new ad view.
+        val adView = AdView(this)
+        adView.setAdSize(AdSize.BANNER)
+        adView.adUnitId ="ca-app-pub-3940256099942544/9214589741"
+//            "ca-app-pub-3940256099942544/9214589741"
+//            "ca-app-pub-2101779718159669/7036158272"
+
+        // Create an ad request.
+        val adRequest = AdRequest.Builder().build()
+        binding.adsMainContainer.addView(adView)
+
+        // Start loading the ad in the background.
+        adView.loadAd(adRequest)
+
+
+    }
+
+
 
 
 }
