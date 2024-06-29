@@ -45,15 +45,15 @@
                 android:textSize="15sp"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/storyNumber"
-                app:layout_constraintEnd_toStartOf="@+id/arrow"
+                app:layout_constraintEnd_toStartOf="@+id/storyFavIcons"
                 app:layout_constraintStart_toEndOf="@+id/storyNumber"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/arrow"
+                android:id="@+id/storyFavIcons"
                 android:layout_width="22dp"
                 android:layout_height="23dp"
-                android:src="@drawable/curved_arrow_right_icon"
+                android:src="@drawable/row_fav_false"
                 app:layout_constraintBottom_toBottomOf="@+id/storyTtitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/storyTtitle" />

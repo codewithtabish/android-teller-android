@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <group
+        android:checkableBehavior="single"
+
+        >
+
+
+
     <item android:title="home"
         android:id="@+id/homeItem"
-        android:icon="@drawable/cross_svgrepo_com"/>
-    <item android:title="Item"
+        android:iconTint="@color/black"
+        android:icon="@drawable/home"/>
+    <item android:title="Faviourites"
         android:id="@+id/faviourites"
-        android:icon="@drawable/youtube_style_playback_svgrepo_com"/>
-    <item android:title="settings"
-        android:id="@+id/settins"
-        android:icon="@drawable/curved_arrow_right_icon"/>
+        android:icon="@drawable/favs_second"/>
+    <item android:title="Category"
+        android:id="@+id/category"
+        android:icon="@drawable/category_svgrepo_com"/>
+    </group>
+
+    <item
+        android:title="Proile"
+        >
+        <menu>
+            <group>
+                <item
+                    android:title="Settings"
+                    android:id="@+id/settings"
+                    android:icon="@drawable/menu_settings"/>
+                <item
+                    android:title="About Developer"
+                    android:id="@+id/aboutDeveloper"
+                    android:icon="@drawable/about_second"/>
+            </group>
+        </menu>
+
+    </item>
+
+
+
 </menu>

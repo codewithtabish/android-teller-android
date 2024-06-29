@@ -3,13 +3,15 @@ package com.example.storiesdata.Models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class StoriesDataModel(val title:String,val content:String,
-    val imageUrl:String,val storyType:String):Parcelable {
+data class StoriesDataModel(val title:String, val content:String,
+                            val imageUrl:String, val storyType:String, var isFav:Boolean):Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
-        parcel.readString().toString()
+        parcel.readString().toString(),
+        parcel.readByte() != 0.toByte() // Convert byte to Boolean
+
     ) {
     }
 

@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.StoriesData" parent="Base.Theme.StoriesData" />
+    <style name="RoundedImageStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

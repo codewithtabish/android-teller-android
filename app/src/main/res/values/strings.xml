@@ -1,4 +1,12 @@
 <resources>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
     <string name="app_name">StoriesData</string>
     <string name="randomdata">aliquid temporibus, perferendis odio veniam expedita quae! Error ipsam ea consequuntur id voluptate voluptatibus placeat nam, veniam magnam nemo et illum, asperiores, quia facere eaque mollitia laborum amet quasi soluta quos? Repudiandae culpa corporis quaerat officia rerum maxime id quis eum consectetur nisi sint commodi porro eveniet quasi incidunt enim nesciunt, modi exercitationem.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_dev">Hello! My name is Sudais Azlan, and I am the creator of StoryTeller, an app designed to bring captivating English stories to your fingertips.</string>
+    <string name="dev_journey">As a passionate developer and storyteller, I have always been fascinated by the power of words and technology. I embarked on this journey to create an app that not only entertains but also inspires readers of all ages.</string>
+    <string name="dev_vision">My vision for StoryTeller is to create a platform where users can discover a diverse range of stories, from classic tales to modern narratives, all in one place. Whether you are a casual reader or a literature enthusiast, StoryTeller aims to provide a seamless and enjoyable reading experience.</string>
+    <string name="dev_contact">Feel free to reach out with any questions, feedback, or just to say hello! You can contact me at sudais@gmail.com or follow me on [Your Social Media Handles]. Thank you for using StoryTeller. I hope you enjoy the stories as much as I enjoyed creating this app for you. Happy Reading!</string>
 </resources>

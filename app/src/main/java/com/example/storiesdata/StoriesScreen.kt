@@ -76,8 +76,11 @@ class StoriesScreen : AppCompatActivity() {
                                 data["title"] as? String ?: "",
                                 data["content"] as? String ?: "",
                                 data["imageUrl"] as? String ?: "",
-                                data["storyType"] as? String ?: ""
+                                data["storyType"] as? String ?: "",
+                                data["isFav"] as Boolean?:false
+
                             )
+
                         } catch (e: Exception) {
                             Log.w("Firestore", "Error converting document ${document.id} to MainCollectionModel: $e")
                             continue // Skip this document if conversion fails
@@ -104,7 +107,7 @@ class StoriesScreen : AppCompatActivity() {
 
 
     private fun  getAllCollections(){
-        stroiesAdapter = StoriesAdapter(this,storiesList)
+        stroiesAdapter = StoriesAdapter(this,storiesList,false)
         binding.storiesRecyler.adapter=stroiesAdapter
         binding.storiesRecyler.layoutManager= LinearLayoutManager(this)
         binding.stoiesShimmerSecond.visibility=View.GONE

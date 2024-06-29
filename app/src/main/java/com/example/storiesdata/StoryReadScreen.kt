@@ -190,7 +190,8 @@ class StoryReadScreen : AppCompatActivity() {
         // Create a new ad view.
         val adView = AdView(this)
         adView.setAdSize(AdSize.BANNER)
-        adView.adUnitId ="ca-app-pub-2101779718159669/7036158272"
+        adView.adUnitId ="ca-app-pub-3940256099942544/9214589741"
+//            "ca-app-pub-2101779718159669/7036158272"
 //            "ca-app-pub-3940256099942544/9214589741"
 //            "ca-app-pub-2101779718159669/7036158272"
 
@@ -203,6 +204,14 @@ class StoryReadScreen : AppCompatActivity() {
 
 
     }
+
+    override fun onPause() {
+        super.onPause()
+        textToSpeech?.stop()
+        textToSpeech?.shutdown()
+    }
+
+
 
 
 }

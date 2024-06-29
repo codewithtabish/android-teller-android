@@ -15,9 +15,11 @@ import com.example.storiesdata.Models.StoriesDataModel
 import com.example.storiesdata.R
 import com.example.storiesdata.StoriesScreen
 import com.example.storiesdata.StoryReadScreen
+import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 
-class StoriesAdapter(val context:Context,val collectionList:ArrayList<StoriesDataModel>):RecyclerView.Adapter<StoriesAdapter.MyViewHolder>() {
+class StoriesAdapter(val context:Context,val collectionList:ArrayList<StoriesDataModel>,
+   val isFromFavContext:Boolean):RecyclerView.Adapter<StoriesAdapter.MyViewHolder>() {
 
 
 
@@ -35,6 +37,20 @@ class StoriesAdapter(val context:Context,val collectionList:ArrayList<StoriesDat
         val obj=collectionList[position]
         holder.title.text=obj.title
         holder.storyNumber.text=(position+1).toString()
+        if (isFromFavContext){
+            holder.favIcon.setImageResource(R.drawable.menu_fav_icon)
+        }
+        holder.favIcon.setOnClickListener {
+
+            val db = FirebaseFirestore.getInstance() // Get Firestore instance
+
+            val docRef = db.collection("stories")
+
+            obj.isFav=false
+            Toast.makeText(context,"removed",Toast.LENGTH_LONG).show()
+        }
+
+
         holder.storyRow.setOnClickListener {
             context.startActivity(Intent(context, StoryReadScreen::class.java).putExtra("myObject", obj))
 
@@ -48,6 +64,7 @@ class StoriesAdapter(val context:Context,val collectionList:ArrayList<StoriesDat
         val title=view.findViewById<TextView>(R.id.storyTtitle)
         val storyNumber=view.findViewById<TextView>(R.id.storyNumber)
         val storyRow=view.findViewById<ConstraintLayout>(R.id.storyRow)
+        val favIcon=view.findViewById<ImageView>(R.id.storyFavIcons)
     }
 
 }
