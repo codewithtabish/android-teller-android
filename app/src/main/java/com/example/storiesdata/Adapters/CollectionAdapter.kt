@@ -40,18 +40,18 @@ class CollectionAdapter(val context:Context,val collectionList:ArrayList<MainCol
            context.startActivity(Intent(context,StoriesScreen::class.java).putExtra("storyCollection",obj.storyType))
        }
 
-        var  pos=position+1
-//           Toast.makeText(context,collectionList.size,Toast.LENGTH_LONG).show()
+//        var  pos=position+1
+////           Toast.makeText(context,collectionList.size,Toast.LENGTH_LONG).show()
+////
+//           if (pos==collectionList.size){
+//               Toast.makeText(context,pos.toString(),Toast.LENGTH_LONG).show()
+//               // Alternatively, if you want to set padding in dp, convert dp to pixels first
+//               val paddingInDp = 30
+//               val scale = context.resources.displayMetrics.density
+//               val paddingInPx = (paddingInDp * scale + 0.5f).toInt()
+//               holder.row.setPadding(0,0,0, paddingInPx)
 //
-           if (pos==collectionList.size){
-               Toast.makeText(context,pos.toString(),Toast.LENGTH_LONG).show()
-               // Alternatively, if you want to set padding in dp, convert dp to pixels first
-               val paddingInDp = 30
-               val scale = context.resources.displayMetrics.density
-               val paddingInPx = (paddingInDp * scale + 0.5f).toInt()
-               holder.row.setPadding(0,0,0, paddingInPx)
-
-           }
+//           }
 
 
 

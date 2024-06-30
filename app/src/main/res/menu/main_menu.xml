@@ -16,7 +16,7 @@
         android:id="@+id/faviourites"
         android:icon="@drawable/favs_second"/>
     <item android:title="Category"
-        android:id="@+id/category"
+        android:id="@+id/category_option"
         android:icon="@drawable/category_svgrepo_com"/>
     </group>
 
@@ -33,6 +33,10 @@
                     android:title="About Developer"
                     android:id="@+id/aboutDeveloper"
                     android:icon="@drawable/about_second"/>
+                <item
+                    android:title="logout"
+                    android:id="@+id/logoutButtonInMenu"
+                    android:icon="@drawable/logout_svgrepo_com__1_"/>
             </group>
         </menu>
 

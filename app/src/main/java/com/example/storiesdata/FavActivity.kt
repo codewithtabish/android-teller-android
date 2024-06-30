@@ -8,7 +8,6 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -18,6 +17,7 @@ import com.example.storiesdata.Adapters.StoriesAdapter
 import com.example.storiesdata.Models.StoriesDataModel
 import com.example.storiesdata.databinding.ActivityFavBinding
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FavActivity : AppCompatActivity() {
@@ -42,6 +42,8 @@ class FavActivity : AppCompatActivity() {
         }
         loadVarables()
         loadDataFromDB()
+
+
 
     }
 
@@ -70,7 +72,8 @@ class FavActivity : AppCompatActivity() {
     private fun loadDataFromDB(){
         val db = FirebaseFirestore.getInstance() // Get Firestore instance
 
-        val docRef = db.collection("stories").whereEqualTo("isFav",true)
+        val docRef = db.collection("stories")
+            .whereArrayContains("users",FirebaseAuth.getInstance().uid.toString())
 
         docRef.get() // Fetch all documents at once (consider pagination for large collections)
             .addOnSuccessListener { documents ->
@@ -85,7 +88,10 @@ class FavActivity : AppCompatActivity() {
                                 data["content"] as? String ?: "",
                                 data["imageUrl"] as? String ?: "",
                                 data["storyType"] as? String ?: "",
-                                data["isFav"] as Boolean?:false
+                                data["isFav"] as Boolean?:false,
+                                data["storyID"] as? String?:document.id,
+                                (data["users"] as? List<String>)?.toTypedArray() ?: arrayOf()
+
 
                             )
 

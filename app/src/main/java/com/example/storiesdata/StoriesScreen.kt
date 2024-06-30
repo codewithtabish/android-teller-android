@@ -12,15 +12,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.storiesdata.Adapters.StoriesAdapter
 import com.example.storiesdata.Models.StoriesDataModel
 import com.example.storiesdata.databinding.ActivityStoriesScreenBinding
-import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.android.play.integrity.internal.s
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,6 +33,9 @@ class StoriesScreen : AppCompatActivity() {
     lateinit var storiesList:ArrayList<StoriesDataModel>
     lateinit var binding:ActivityStoriesScreenBinding
     private var mInterstitialAd: InterstitialAd? = null
+    lateinit var storyDocumentId:Any
+    lateinit var favDocumentId: Any
+    var isAddedToFav:Boolean=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityStoriesScreenBinding.inflate(layoutInflater)
@@ -57,43 +61,74 @@ class StoriesScreen : AppCompatActivity() {
     private fun loadVarables(){
         storiesList=ArrayList()
         collectionType= intent.getStringExtra("storyCollection").toString()
-        Toast.makeText(this,collectionType,Toast.LENGTH_LONG).show()
     }
     private fun loadDataFromDB(){
-        val db = FirebaseFirestore.getInstance() // Get Firestore instance
+        val db = FirebaseFirestore.getInstance()
+        // Get Firestore instance
 
         val docRef = db.collection("stories").whereEqualTo("storyType",collectionType)
-
         docRef.get() // Fetch all documents at once (consider pagination for large collections)
             .addOnSuccessListener { documents ->
                 if (documents != null) {
 
+
+
+
                     for (document in documents) {
+                        var  isFavList=false
+                        val documentID:String=document.id
+                        storyDocumentId=document.id
+
+
+
+
+
+
                         val data = document.data ?: continue
-                        // Attempt to convert to MainCollectionModel, handle errors gracefully
+                        val title = data["title"] as? String ?: ""
+                        val content = data["content"] as? String ?: ""
+                        val imageUrl = data["imageUrl"] as? String ?: ""
+                        val storyType = data["storyType"] as? String ?: ""
+                        val isFav = data["isFav"] as? Boolean ?:false
+                        val storyID = data["storyID"] as? String ?: ""
+
+
+//
+//                        val title:String, val content:String,
+//                        val imageUrl:String, val storyType:String, var isFav:Boolean,
+//                        val storyID:String,
+
+
+
                         val model = try {
+
                             StoriesDataModel(
                                 data["title"] as? String ?: "",
                                 data["content"] as? String ?: "",
                                 data["imageUrl"] as? String ?: "",
                                 data["storyType"] as? String ?: "",
-                                data["isFav"] as Boolean?:false
+                                data["isFav"] as? Boolean ?:false,
+                                data["storyID"] as String?:documentID,
+                                (data["users"] as? List<String>)?.toTypedArray() ?: arrayOf()
 
+
+//
+//
                             )
+
+
 
                         } catch (e: Exception) {
                             Log.w("Firestore", "Error converting document ${document.id} to MainCollectionModel: $e")
                             continue // Skip this document if conversion fails
                         }
-                        storiesList.add(model)
+                            storiesList.add(model)
+
 
 
 
                     }
                     getAllCollections()
-
-                    // Process retrieved data (e.g., update UI, perform calculations)
-//                    processData(dataList)
                 } else {
                     Log.d("Firestore", "No documents retrieved") // Handle no documents case (optional)
                 }
@@ -102,7 +137,13 @@ class StoriesScreen : AppCompatActivity() {
                 Log.w("Firestore", "Error getting documents: $exception") // Handle errors
             }
 
+
+
+
+
+
     }
+
 
 
 
@@ -113,8 +154,8 @@ class StoriesScreen : AppCompatActivity() {
         binding.stoiesShimmerSecond.visibility=View.GONE
 
     }
-    
-    
+
+
     private fun checkAds(){
         val backgroundScope = CoroutineScope(Dispatchers.IO)
         backgroundScope.launch {

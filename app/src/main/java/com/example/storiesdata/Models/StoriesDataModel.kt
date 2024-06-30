@@ -2,15 +2,26 @@ package com.example.storiesdata.Models
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.util.ArrayList
 
-data class StoriesDataModel(val title:String, val content:String,
-                            val imageUrl:String, val storyType:String, var isFav:Boolean):Parcelable {
+data class StoriesDataModel(
+    val title:String, val content:String,
+    val imageUrl:String, val storyType:String, var isFav:Boolean,
+    val storyID:String,
+    val users:Array<String>
+
+):Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
-        parcel.readByte() != 0.toByte() // Convert byte to Boolean
+        parcel.readByte() != 0.toByte(),
+       parcel.readString().toString(),
+        parcel.createStringArray() ?: arrayOf()
+
+
+
 
     ) {
     }
