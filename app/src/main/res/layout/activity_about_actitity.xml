@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="?android:textColorPrimary"
                 android:textSize="22sp"
                 android:text="About The Developer"/>
 
@@ -50,17 +50,20 @@
                 android:layout_height="wrap_content"
                 android:lineHeight="30dp"
                 android:layout_marginTop="10dp"
+                android:textColor="?android:textColorPrimary"
+
                 android:textSize="15sp"
                 android:textStyle="italic"
                 android:text="@string/about_dev"
                 android:textAppearance="?attr/textAppearanceBody1"
                 android:layout_marginBottom="16dp"
-                android:textColor="@color/black" />
+                />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="?android:textColorPrimary"
+
                 android:textSize="22sp"
                 android:text="My Journey"/>
 
@@ -72,16 +75,17 @@
                 android:layout_marginTop="10dp"
                 android:textStyle="italic"
                 android:textSize="15sp"
+                android:textColor="?android:textColorPrimary"
                 android:text="@string/dev_journey"
                 android:textAppearance="?attr/textAppearanceBody1"
                 android:layout_marginBottom="16dp"
-                android:textColor="@color/black" />
+                />
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="?android:textColorPrimary"
                 android:textSize="22sp"
                 android:text="Vision"/>
 
@@ -93,18 +97,20 @@
                 android:lineHeight="30dp"
                 android:layout_marginTop="10dp"
                 android:textStyle="italic"
+                android:textColor="?android:textColorPrimary"
+
                 android:textSize="15sp"
                 android:text="@string/dev_vision"
                 android:textAppearance="?attr/textAppearanceBody1"
                 android:layout_marginBottom="16dp"
-                android:textColor="@color/black" />
+                />
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="22sp"
+                android:textColor="?android:textColorPrimary"
                 android:text="Contact With Me"/>
 
 
@@ -117,10 +123,11 @@
                 android:textSize="15sp"
                 android:textStyle="italic"
                 android:paddingBottom="20dp"
+                android:textColor="?android:textColorPrimary"
                 android:text="@string/dev_contact"
                 android:textAppearance="?attr/textAppearanceBody1"
                 android:layout_marginBottom="16dp"
-                android:textColor="@color/black" />
+                />
 
 
 

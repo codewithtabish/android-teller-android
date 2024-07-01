@@ -18,6 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/collectionstyle"
+
+            android:textColor="?android:textColorPrimary"
             android:padding="10dp">
 
             <TextView
@@ -26,8 +28,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
                 android:padding="10dp"
+                android:textColor="?android:textColorPrimary"
                 android:text="1"
-                android:textColor="#696969"
                 android:textSize="15sp"
                 android:textStyle="italic"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,11 +39,11 @@
                 android:id="@+id/storyTtitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="?android:textColorPrimary"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="sans-serif-black"
                 android:text="Mongooes and Snake"
-                android:textColor="#696969"
                 android:textSize="15sp"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/storyNumber"

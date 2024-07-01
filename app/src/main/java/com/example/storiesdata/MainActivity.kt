@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 
@@ -47,6 +48,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navigationView: NavigationView
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     var fromCat: Boolean = false
+    private var isDarkMode = false
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,6 +88,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.MAINThreeDots.setOnClickListener {
             showPopupMenu(binding.MAINThreeDots)
+        }
+        binding.nightMode.setOnClickListener {
+            toggleTheme()
         }
 
 
@@ -363,6 +369,20 @@ class MainActivity : AppCompatActivity() {
 //        intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("android.resource://$appPackageName/$appIconDrawable")) // Include the drawable as a stream
 
         startActivity(Intent.createChooser(intent, "Share $appName via"))
+    }
+
+
+    private fun toggleTheme() {
+        isDarkMode = !isDarkMode
+
+        val mode = if (isDarkMode) {
+            AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            AppCompatDelegate.MODE_NIGHT_NO
+        }
+
+        AppCompatDelegate.setDefaultNightMode(mode)
+        delegate.applyDayNight() // Apply the new night mode without recreating the activity
     }
 
 

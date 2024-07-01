@@ -13,7 +13,6 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/favMainLayout"
-        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -74,6 +73,7 @@
                     android:id="@+id/drawerIcon"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:tint="?android:textColorPrimary"
                     android:layout_marginStart="16dp"
                     android:src="@drawable/menu_alt_1_svgrepo_com"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -83,11 +83,11 @@
                 <TextView
                     android:id="@+id/appNameId"
                     android:layout_width="wrap_content"
+                    android:textColor="?android:textColorPrimary"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="4dp"
                     android:text="StoryTeller"
-                    android:textColor="@color/black"
                     android:textSize="19sp"
                     app:layout_constraintBottom_toBottomOf="@+id/drawerIcon"
                     app:layout_constraintStart_toEndOf="@+id/drawerIcon"
@@ -98,12 +98,14 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginEnd="24dp"
+                    android:tint="?android:textColorPrimary"
                     android:src="@drawable/dots"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/nightMode" />
 
                 <ImageView
                     android:id="@+id/nightMode"
+                    android:tint="?android:textColorPrimary"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginEnd="16dp"

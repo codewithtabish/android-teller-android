@@ -1,8 +1,22 @@
+<!-- res/values/themes.xml -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.StoriesData" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariantLight</item>
+        <item name="colorOnPrimary">@color/colorOnPrimaryLight</item>
+        <item name="colorSecondary">@color/colorSecondaryLight</item>
+        <item name="colorOnSecondary">@color/colorOnSecondaryLight</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <!-- Customize other attributes if needed -->
+        <item name="android:statusBarColor">@color/colorPrimaryLight</item>
+        <item name="android:windowLightStatusBar">false</item> <!-- Set text color to dark -->
+
+
+        <!--        <item name="colorBackground">@color/colorBackgroundLight</item>-->
+        <item name="colorOnBackground">@color/colorOnBackgroundLight</item>
     </style>
 
     <style name="Theme.StoriesData" parent="Base.Theme.StoriesData" />

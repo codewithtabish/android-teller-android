@@ -52,6 +52,7 @@
                 <ImageView
                     android:id="@+id/threeDots"
                     android:layout_width="wrap_content"
+                    android:tint="?android:textColorPrimary"
                     android:layout_height="wrap_content"
                     android:src="@drawable/menu_alt_1_svgrepo_com"
                     android:layout_gravity="end"
@@ -106,14 +107,21 @@
             <TextView
                 android:id="@+id/storyContent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif"
+                android:justificationMode="inter_word"
+                android:lineHeight="35dp"
                 android:text="@string/randomdata"
+                android:textSize="16sp"
+                android:textColor="?android:textColorPrimary"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/speakIcon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:padding="10dp"
-                android:lineSpacingMultiplier="1.5"
-                android:paddingBottom="60dp"/>
+                android:paddingBottom="60dp"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

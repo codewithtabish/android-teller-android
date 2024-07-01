@@ -3,4 +3,21 @@
     <color name="black">#FF000000</color>
     <color name="red">#FF0000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Light Theme Colors -->
+    <color name="colorPrimaryLight">#05635B</color>
+    <color name="colorPrimaryVariantLight">#3700B3</color>
+    <color name="colorOnPrimaryLight">#FFFFFF</color>
+    <color name="colorSecondaryLight">#03DAC6</color>
+    <color name="colorOnSecondaryLight">#000000</color>
+    <color name="colorBackgroundLight">#FFFFFF</color>
+    <color name="colorOnBackgroundLight">#000000</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="colorPrimaryDark">#2B292C</color>
+    <color name="colorPrimaryVariantDark">#3700B3</color>
+    <color name="colorOnPrimaryDark">#000000</color>
+    <color name="colorSecondaryDark">#03DAC6</color>
+    <color name="colorOnSecondaryDark">#000000</color>
+    <color name="colorBackgroundDark">#121212</color>
+    <color name="colorOnBackgroundDark">#FFFFFF</color>
 </resources>

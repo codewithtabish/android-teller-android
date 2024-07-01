@@ -1,9 +1,20 @@
+<!-- res/values-night/themes.xml -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.StoriesData" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariantDark</item>
+        <item name="colorOnPrimary">@color/colorOnPrimaryDark</item>
+        <item name="colorSecondary">@color/colorSecondaryDark</item>
+        <item name="colorOnSecondary">@color/colorOnSecondaryDark</item>
+        <item name="colorOnBackground">@color/colorOnBackgroundDark</item>
+        <item name="android:textColorPrimary">@color/white</item>
+
+        <!-- Define your custom text color attribute -->
     </style>
+
+    <style name="Theme.StoriesData" parent="Base.Theme.StoriesData" />
     <style name="RoundedImageStyle">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
