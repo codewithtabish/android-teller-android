@@ -1,6 +1,7 @@
 package com.example.storiesdata
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuInflater
@@ -334,6 +335,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.share_popup -> {
+                shareApp()
                 Toast.makeText(this, "Option 2 selected", Toast.LENGTH_SHORT).show()
                 true
             }
@@ -343,6 +345,24 @@ class MainActivity : AppCompatActivity() {
             }
             else -> false
         }
+    }
+
+
+
+    private fun shareApp() {
+        val appPackageName = packageName
+        val appName = getString(R.string.app_name)
+        val appIconDrawable = R.drawable.story // Replace with your actual drawable resource ID
+
+        val shareMessage = getString(R.string.share_message, appName, appPackageName)
+
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_SUBJECT, appName)
+        intent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+//        intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("android.resource://$appPackageName/$appIconDrawable")) // Include the drawable as a stream
+
+        startActivity(Intent.createChooser(intent, "Share $appName via"))
     }
 
 

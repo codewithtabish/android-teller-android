@@ -1,7 +1,9 @@
 <resources>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="app_name">StoriesData</string>
+    <string name="app_name">StoryTeller</string>
+    <string name="share_message">Check out %1\$s on Google Play Store: https://play.google.com/store/apps/details?id=%2\$s</string>
+
 
     <string name="default_web_client_id">AIzaSyB0CMH3GqfbsbYohBqG5Zj6NnqwdEq2CWU</string>
     <string name="randomdata">aliquid temporibus, perferendis odio veniam expedita quae! Error ipsam ea consequuntur id voluptate voluptatibus placeat nam, veniam magnam nemo et illum, asperiores, quia facere eaque mollitia laborum amet quasi soluta quos? Repudiandae culpa corporis quaerat officia rerum maxime id quis eum consectetur nisi sint commodi porro eveniet quasi incidunt enim nesciunt, modi exercitationem.</string>
